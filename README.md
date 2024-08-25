@@ -2,4 +2,4 @@
 
 ## Frontend
 
-1. 
+1. [Задание 1](/tasks/front-task-1.md)
