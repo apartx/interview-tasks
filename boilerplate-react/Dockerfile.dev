@@ -1,0 +1,15 @@
+FROM node:20
+
+RUN apt-get update && apt-get install -y curl build-essential python3 bash git && \
+  rm -rf /var/lib/apt/lists/*
+
+RUN \
+  curl https://raw.githubusercontent.com/meteor/meteor/devel/scripts/admin/launch-meteor > /usr/local/bin/meteor && \
+  chmod +x /usr/local/bin/meteor
+
+RUN \
+  useradd -ms /bin/bash mt && \
+  mkdir /opt/app && chown mt:mt /opt/app
+
+WORKDIR /opt/app
+USER mt

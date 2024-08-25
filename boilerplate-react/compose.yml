@@ -1,0 +1,43 @@
+name: apartx
+
+services:
+  app:
+    platform: linux/amd64
+    build:
+      dockerfile: Dockerfile.dev
+      platforms:
+        - "linux/amd64"
+    command: bash
+    tty: true
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "10"
+    ports:
+      - "3000:3000"
+    volumes:
+      - meteor_base:/home/mt
+      - ${PWD}/:/opt/app
+  
+  mongo:
+    image: mongo:6.0
+    command: ["--replSet", "meteor", "--bind_ip_all", "--port", "27017"]
+    ports:
+      - 27017:27017
+    healthcheck:
+      test: echo "try { rs.status() } catch (err) { rs.initiate({_id:'meteor',members:[{_id:0,host:'apartx-mongo-1:27017'}]}) }" | mongosh --port 27017 --quiet
+      interval: 5s
+      timeout: 30s
+      start_period: 0s
+      start_interval: 1s
+      retries: 30
+    volumes:
+      - "mongo_data:/data/db"
+      - "mongo_config:/data/configdb"
+
+volumes:
+  meteor_base:
+  mongo_data:
+  mongo_config:
+  
