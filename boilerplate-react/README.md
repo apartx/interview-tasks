@@ -24,5 +24,3 @@ npm start
 ```sh
 docker compose down
 ```
-
-## Run mongo container
