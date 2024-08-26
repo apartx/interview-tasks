@@ -1,9 +1,11 @@
 # Frontend task 1
 
-### Что использовать
+## Что использовать
 
 - [Meteor](https://meteor.com)
 - [React](https://react.dev)
+
+## Задание
 
 Есть таблица, в которой есть числа. Числа сравниваются с каким то интервалом в прошлом. При выборе строки (щелчке) на графике отображается информация по этому показателю.
 
@@ -19,3 +21,10 @@ http://www.highcharts.com/demo/ или любой другой.
 ### Дополнительно (не обязательно)
 
 Написать бэк для получения данных используя [Meteor Subscriptions](https://guide.meteor.com/data-loading) или [Meteor Methods](https://guide.meteor.com/methods).
+
+## Шаблон
+
+В папке [boilerplate-react](/boilerplate-react/) лежит минимальный шаблон [Meteor](https://meteor.com) 
+приложения, с помощью которого нужно выполнять задания.
+
+Для запуска проекта достаточно наличие на компьютере [Docker](https://www.docker.com/)
